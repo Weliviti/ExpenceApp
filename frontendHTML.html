@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>💰 Expense Tracker</title>
+  <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+  <script src="blockchain.js" defer></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: #fff;
+      text-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      padding: 25px;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    .input-section {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    input {
+      flex: 1;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    button {
+      padding: 12px 18px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+    }
+
+    #addTaskBtn {
+      background: #4caf50;
+      color: #fff;
+    }
+    #addTaskBtn:hover {
+      background: #388e3c;
+      transform: scale(1.05);
+    }
+
+    #showChainBtn {
+      background: #2196f3;
+      color: #fff;
+    }
+    #showChainBtn:hover {
+      background: #1565c0;
+      transform: scale(1.05);
+    }
+
+    .summary {
+      display: flex;
+      justify-content: space-between;
+      background: #f4f9ff;
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    table th, table td {
+      padding: 12px;
+      text-align: left;
+    }
+
+    table th {
+      background: #2196f3;
+      color: #fff;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    table tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+
+    table tr:nth-child(odd) {
+      background: #fff;
+    }
+
+    #output {
+      margin-top: 20px;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>💰 Expense Tracker</h1>
+  <div class="card">
+    <div class="input-section">
+      <input type="text" id="taskinput" placeholder="Enter expense (e.g. Coffee - $5)">
+      <button id="addTaskBtn">➕ Add</button>
+      <button id="showChainBtn">📜 Show</button>
+    </div>
+
+    <div class="summary">
+      <span>Total Expenses:</span>
+      <span id="totalAmount">$0</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Expense</th>
+          <th>Timestamp</th>
+        </tr>
+      </thead>
+      <tbody id="output">
+        <!-- Expenses will show here -->
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
